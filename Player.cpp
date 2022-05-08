@@ -7,6 +7,8 @@
 #include <iostream>
 
 
+static const int MAX_LEVEL =10 ;
+
 Player::Player(char *name, int maxHP, int force) {
     m_name = new char[strlen(name) + 1];
     strcpy(m_name, name);
@@ -43,5 +45,28 @@ void Player::printInfo() const {
     printPlayerInfo(this->m_name,this->m_level,this->m_force , this->m_HP , this->m_coins);
 }
 void Player::levelUpdate() {
-    if(this->)
+    if(this->m_level<MAX_LEVEL){
+        this->m_level++;
+    }
+}
+
+int Player::getLevel() const{
+    return this->m_level;
+}
+
+void Player::buff(int amount) {
+    if(amount >0){
+        this->m_force+=amount;
+    }
+}
+
+void Player::heal(int amount) {
+    if(amount >0){
+        if(amount + this->m_HP >=this->m_maxHP){
+            this->m_HP = this->m_maxHP;
+        }
+        else{
+            this->m_HP += amount;
+        }
+    }
 }

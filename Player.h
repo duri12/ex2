@@ -20,7 +20,7 @@ public:
     void printInfo() const;
     void levelUpdate();
     int getLevel() const;
-    void buff(int addedForce);
+    void buff(int amount);
     void heal(int health);
     void damage(int damage);
     bool isKnockedOut() const;
