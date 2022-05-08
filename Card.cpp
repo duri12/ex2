@@ -2,6 +2,11 @@
 #include "utilities.h"
 #include "Player.h"
 
+Card:: Card(CardType type, const CardStats& stats) {
+    this->m_stats = stats;
+    this->m_effect = type;
+}
+
 void Card::applyEncounter(Player &player) const {
     if(this->m_effect == CardType::Battle){
         if(player.getAttackStrength() >= this->m_stats.force){
