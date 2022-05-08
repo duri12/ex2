@@ -12,7 +12,7 @@ class Player {
 
 public:
     Player(std::string name, int maxHP =100, int force =5);
-
+    Player(const Player&);
 
 };
 
