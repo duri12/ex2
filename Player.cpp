@@ -32,14 +32,19 @@ Player::~Player(){
     delete[] m_name;
 }
 
-Player operator=(const Player& p2) {
-    strcpy(this->m_name, p2.name);
+Player& Player::operator=(const Player& p2) {
+    if(this == &p2){
+        return *this;
+    }
+    delete[] m_name;
+    this->m_name = new char[strlen(p2.m_name) + 1];
+    strcpy(this->m_name, p2.m_name);
     this->m_level = p2.m_level;
     this->m_force = p2.m_force;
-    this->m_MaxHP = m_MaxHP;
-    this->m_HP = m_HP;
-    this->m_coins = m->coins;
-
+    this->m_maxHP = p2.m_maxHP;
+    this->m_HP = p2.m_HP;
+    this->m_coins = p2.m_coins;
+    return *this;
 }
 
 
@@ -103,6 +108,9 @@ bool Player::isKnockedOut() const {
 }
 
 bool Player::pay(int amount) {
+    if(amount <0){
+        return true;
+    }
     if(this->m_coins-amount>=0) {
         this->m_coins -= amount;
         return true;

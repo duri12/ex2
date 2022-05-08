@@ -15,7 +15,7 @@ class Player {
 public:
     Player(char *name, int maxHP =100, int force =5);
     Player(const Player&);
-    Player operator=(const Player&);
+    Player & operator=(const Player&);
     ~Player();
     void printInfo() const;
     void levelUpdate();
