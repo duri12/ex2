@@ -1,0 +1,44 @@
+#include "Card.h"
+#include "utilities.h"
+#include "Player.h"
+
+void Card::applyEncounter(Player &player) const {
+    if(this->m_effect == CardType::Battle){
+        if(player.getAttackStrength() >= this->m_stats.force){
+            player.levelUpdate();
+            player.addCoins(this->m_stats.loot);
+        }
+        else{
+            player.damage(this->m_stats.hpLossOnDefeat);
+        }
+    }
+    else if(this->m_effect == CardType::Buff){
+        if(player.pay(this->m_stats.cost)){
+            player.buff(this->m_stats.buff);
+        }
+    }
+    else if(this->m_effect == CardType::Heal){
+        if(player.pay(this->m_stats.cost)){
+            player.heal(this->m_stats.heal);
+        }
+    }
+    else if(this->m_effect == CardType::Treasure){
+        player.addCoins(this->m_stats.loot);
+    }
+}
+
+
+void Card::printInfo() const{
+    if(this->m_effect== CardType::Battle){
+        printBattleCardInfo(this->m_stats);
+    }
+    else if(this->m_effect == CardType::Heal){
+        printHealCardInfo(this->m_stats);
+    }
+    else if(this->m_effect == CardType::Buff){
+        printBuffCardInfo(this->m_stats);
+    }
+    else if(this->m_effect == CardType::Treasure){
+        printTreasureCardInfo(this->m_stats);
+    }
+};
