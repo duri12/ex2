@@ -16,6 +16,8 @@
 enum class GameStatus{Win, Loss, MidGame};
 
 class Mtmchkin {
+
+
 public:
 
     /*
@@ -61,7 +63,9 @@ public:
 
 private:
     //TODO: complete the Mtmchkin class.
-
+    Card m_cards[];
+    GameStatus m_status;
+    Player m_player;
 };
 
 
