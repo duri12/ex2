@@ -73,6 +73,28 @@ void Player::heal(int amount) {
     }
 }
 
+void Player::damage(int amount) {
+    if(amount >0){
+        if(this->m_HP - amount > 0){
+            this->m_HP -= amount;
+        }
+        else{
+            this->m_HP = 0;
+        }
+    }
+}
+
+
+void Player::addCoins(int amount) {
+    if(amount >0){
+        this->m_coins += amount;
+    }
+}
+
+int Player::getAttackStrength() const{
+    return this->m_level+this->m_force;
+}
+
 bool Player::isKnockedOut() const {
     if(this->m_HP==0) {
         return true;
