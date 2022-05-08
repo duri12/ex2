@@ -7,7 +7,6 @@
 
 
 
-
 /*
  * Numeric stats of a card.
  */

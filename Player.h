@@ -1,20 +1,22 @@
 #ifndef EX2_PLAYER_H
 #define EX2_PLAYER_H
 
+#include<iostream>
+#include <string>
 class Player {
-    std::string m_name;
-    int m_level;
-    int m_force;
-    int m_MaxHP;
-    int m_HP;
-    int m_coins;
+    char * m_name;
+    int m_level; //the level of the player
+    int m_force; // the force of the player
+    int m_maxHP;//max HP of the player
+    int m_HP; // the current HP of the player
+    int m_coins;//the current coins of the player
 
 
 public:
-    Player(std::string name, int maxHP =100, int force =5);
+    Player(char *name, int maxHP =100, int force =5);
     Player(const Player&);
     Player operator=(const Player&);
-    ~Player() = default;
+    ~Player();
     void printInfo() const;
     void levelUpdate();
     int getLevel() const;
