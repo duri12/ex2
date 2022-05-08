@@ -33,11 +33,13 @@ Player::~Player(){
 }
 
 Player operator=(const Player& p2) {
-    this->m_level = p2->m_level;
-    this->m_force = p2->m_force;
-    int m_MaxHP;
-    int m_HP;
-    int m_coins
+    strcpy(this->m_name, p2.name);
+    this->m_level = p2.m_level;
+    this->m_force = p2.m_force;
+    this->m_MaxHP = m_MaxHP;
+    this->m_HP = m_HP;
+    this->m_coins = m->coins;
+
 }
 
 
@@ -69,4 +71,19 @@ void Player::heal(int amount) {
             this->m_HP += amount;
         }
     }
+}
+
+bool Player::isKnockedOut() const {
+    if(this->m_HP==0) {
+        return true;
+    }
+    return false;
+}
+
+bool Player::pay(int amount) {
+    if(this->m_coins-amount>=0) {
+        this->m_coins -= amount;
+        return true;
+    }
+    return false;
 }
