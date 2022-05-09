@@ -28,7 +28,9 @@ bool Mtmchkin::isOver() const {
 }
 
 void Mtmchkin::playNextCard() {
+    this->m_cards[this->m_currCard].printInfo();
     this->m_cards[this->m_currCard].applyEncounter();
+    this->m_player.printInfo();
     if(this->m_currCard+1==this->m_numOfCards) {
         this->m_currCard=0;
     } else {
