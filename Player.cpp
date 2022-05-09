@@ -7,7 +7,7 @@
 #include <iostream>
 
 
-static const int MAX_LEVEL =10 ;
+static const int MAX_LEVEL = 10 ;
 
 Player::Player(char *name, int maxHP, int force) {
     m_name = new char[strlen(name) + 1];
