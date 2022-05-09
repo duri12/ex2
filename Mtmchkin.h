@@ -30,7 +30,7 @@ public:
      *      An instance of Mtmchkin
     */
     Mtmchkin(const char* playerName, const Card* cardsArray, int numOfCards);
-
+    ~Mtmchkin()  = default;
 
     /*
      * Play the next Card - according to the instruction in the exercise document
@@ -48,7 +48,7 @@ public:
      *          True if the game ended
      *          False otherwise
      */
-    bool isOver() const;
+    bool isOver() ;
 
 
     /*
@@ -62,8 +62,7 @@ public:
     //TODO: complete the Mtmchkin class.
 
 private:
-    //TODO: complete the Mtmchkin class.
-    Card* m_cards;
+    const Card *m_cards;
     GameStatus m_status;
     Player m_player;
     int m_currCard;

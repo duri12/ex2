@@ -13,8 +13,8 @@ class Player {
 
 
 public:
-    Player(char *name, int maxHP =100, int force =5);
-    Player(const Player&);
+    explicit Player(char *name, int maxHP =100, int force =5);
+    Player(const Player& player);
     Player & operator=(const Player&);
     ~Player();
     void printInfo() const;

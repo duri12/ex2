@@ -9,12 +9,16 @@ Card:: Card(CardType type, const CardStats& stats) {
 
 void Card::applyEncounter(Player &player) const {
     if(this->m_effect == CardType::Battle){
+
         if(player.getAttackStrength() >= this->m_stats.force){
             player.levelUpdate();
             player.addCoins(this->m_stats.loot);
+            printBattleResult(true);
         }
         else{
             player.damage(this->m_stats.hpLossOnDefeat);
+            printBattleResult(false);
+
         }
     }
     else if(this->m_effect == CardType::Buff){
