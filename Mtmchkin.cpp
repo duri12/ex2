@@ -8,7 +8,7 @@ const int MAX_LEVEL = 10;
 Mtmchkin::Mtmchkin(const char *playerName, const Card *cardsArray, int numOfCards):
 m_player(Player((char*)playerName))
 {
-    ;
+
     this->m_status = GameStatus::MidGame;
     this->m_cards = cardsArray;
     this->m_currCard = 0;
