@@ -6,18 +6,26 @@
 const int MAX_LEVEL = 10;
 
 Mtmchkin::Mtmchkin(const char *playerName, const Card *cardsArray, int numOfCards):
-m_player(Player((char*)playerName))
+m_player(playerName)
 {
-
+    Card *temp = new Card[numOfCards];
+    for (int i = 0; i < numOfCards; ++i) {
+        temp[i] = cardsArray[i];
+    }
+    this->m_cards = temp;
     this->m_status = GameStatus::MidGame;
-    this->m_cards = cardsArray;
     this->m_currCard = 0;
     this->m_numOfCards = numOfCards;
+}
+
+Mtmchkin::~Mtmchkin(){
+    delete [] m_cards;
 }
 
 GameStatus Mtmchkin::getGameStatus() const {
     return this->m_status;
 }
+
 
 bool Mtmchkin::isOver(){
     if(this->m_player.isKnockedOut()) {

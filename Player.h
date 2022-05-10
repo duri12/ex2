@@ -1,8 +1,11 @@
 #ifndef EX2_PLAYER_H
 #define EX2_PLAYER_H
 
-#include<iostream>
-#include <string>
+#include "utilities.h"
+#include <cstring>
+#include <iostream>
+
+
 class Player {
     char * m_name;
     int m_level; //the level of the player
@@ -13,12 +16,12 @@ class Player {
 
 
 public:
-    explicit Player(char *name, int maxHP =100, int force =5);
-    Player(const Player& player);
-    Player & operator=(const Player&);
+    explicit Player(const char *name, int maxHP =100, int force =5);
+    Player(const Player& );
+    Player & operator=(const Player& p2 );
     ~Player();
     void printInfo() const;
-    void levelUpdate();
+    void levelUp();
     int getLevel() const;
     void buff(int amount);
     void heal(int health);

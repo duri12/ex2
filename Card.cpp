@@ -1,6 +1,5 @@
 #include "Card.h"
-#include "utilities.h"
-#include "Player.h"
+
 
 Card:: Card(CardType type, const CardStats& stats) {
     this->m_stats = stats;
@@ -11,7 +10,7 @@ void Card::applyEncounter(Player &player) const {
     if(this->m_effect == CardType::Battle){
 
         if(player.getAttackStrength() >= this->m_stats.force){
-            player.levelUpdate();
+            player.levelUp();
             player.addCoins(this->m_stats.loot);
             printBattleResult(true);
         }
@@ -50,4 +49,4 @@ void Card::printInfo() const{
     else if(this->m_effect == CardType::Treasure){
         printTreasureCardInfo(this->m_stats);
     }
-};
+}
